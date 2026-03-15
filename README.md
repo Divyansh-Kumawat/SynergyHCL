@@ -17,6 +17,7 @@ This project consists of two main components:
 ### Prerequisites
 Make sure you have Python 3.8+ installed.
 
+
 ### 1. Setup the Backend
 The backend utilizes Python and requires some dependencies to serve the machine learning predictions.
 
