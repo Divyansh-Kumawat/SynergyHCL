@@ -1,4 +1,6 @@
-const API_BASE = 'http://localhost:5000/api';
+// Dynamically set API_BASE. In production, replace the render.com URL with your actual deployed backend URL.
+const IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const API_BASE = IS_LOCAL ? 'http://localhost:5000/api' : 'https://your-backend-app-name.onrender.com/api';
 
 // DOM Elements
 const searchInput = document.getElementById('customerSearch');

@@ -94,3 +94,59 @@ The UI/UX focuses on a premium and performant "wow" factor:
     ├── script.js              # Fetch API connectivity & DOM manipulation
     └── styles.css             # Vanilla CSS design system
 ```
+
+## 🗺️ Roadmap
+
+- [x] Initial Data Exploration and Model Training
+- [x] Backend API Development using Flask
+- [x] Frontend UI Implementation with Glassmorphism
+- [ ] Add User Authentication and Authorization
+- [ ] Implement Real-Time Sales Dashboard
+- [ ] Integrate Advanced Analytics & Visualizations
+- [ ] Support for Multiple Stores/Regions
+
+## 🔄 Workflows
+
+### 1. Data Preparation Workflow
+1. Raw CSV data loaded from `sales_06_FY2020-21 copy.csv`
+2. Data cleaned and pre-processed
+3. RFM (Recency, Frequency, Monetary) features calculated
+4. Processed data saved for fast inference
+
+### 2. Model Inference Workflow
+1. User selects Customer ID on Frontend
+2. API Request sent to Backend `GET /api/predict/<cust_id>`
+3. Backend fetches pre-calculated customer features
+4. XGBoost model predictors are run against the data
+5. Expected sales for the next 30 days are calculated
+6. JSON response returned to Frontend
+7. UI updates dynamically with satisfying number animations
+
+## 📊 Application Flowchart
+
+```mermaid
+graph TD
+    A[User visits UI] --> B[Select / Search Customer ID]
+    B --> C{Fetch Predict API}
+    C -->|GET /api/predict/:ID| D[Flask Backend Server]
+    D --> E[Retrieve Compiled Customer Features]
+    E --> F[final_xgboost_model.pkl Model]
+    F --> G[Generate Spend Prediction]
+    G --> H[Return JSON Response]
+    H --> I[Update UI Dashboard Animations]
+```
+
+## 📱 How to Use the Application
+
+1. **Start the Services**
+   - Ensure both the backend Flask server (`localhost:5000`) and the frontend HTTP server (`localhost:8080`) are running as described in the Getting Started section.
+2. **Access the Dashboard**
+   - Open your web browser and navigate to `http://localhost:8080`.
+3. **Select a Customer**
+   - Locate the customer dropdown or search bar on the dashboard.
+   - Select or type a valid Customer ID from the provided list.
+4. **View Sales Predictions**
+   - Upon selection, the dashboard will automatically fetch current metrics.
+   - The UI will beautifully animate and display the predicted sales for the customer over the next 30 days.
+   - Review the detailed underlying RFM features (Recency, Frequency, Monetary value) updating on the glass panels.
+
